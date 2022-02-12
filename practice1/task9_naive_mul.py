@@ -4,6 +4,7 @@ def naive_mul(x, y):
         x = x + r;
     return x
 
-for i in range(100):
-    for j in range(100):
-        print(i + 1, " * ", j + 1, " = ", naive_mul(i + 1, j + 1))
+if __name__ == '__main__':
+    for i in range(100):
+        for j in range(100):
+            print(i + 1, " * ", j + 1, " = ", naive_mul(i + 1, j + 1))
