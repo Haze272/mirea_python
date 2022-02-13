@@ -1,10 +1,11 @@
 def fast_mul(a, b):
     result = 0
-    while a > 1:
-        a //= 2
-        b *= 2
+    while a:
         if a % 2 != 0:
             result += b
+        a //= 2
+        b *= 2
+
     return result
 
 def fast_pow(a, b):
