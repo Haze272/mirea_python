@@ -1,4 +1,6 @@
 ﻿import operator
+from queue import PriorityQueue
+
 
 class Coordinate():
     def __init__(self, x, y):
@@ -13,10 +15,10 @@ def near_gold(check, x, y):
     for i in range(27):
         for j in range(10):
             if check("gold", i, j) == True:
-                gold_dict[Coordinate(i, j)] = heuristic(Coordinate(x, y), Coordinate(i, j))
-
-    for m in sorted_tuple:
-        print(m.x, m.y, ":", sorted_tuple[m])
+                gold_dict[heuristic(Coordinate(x, y), Coordinate(i, j))] = Coordinate(i, j)
+    sorted_dict = {k: gold_dict[k] for k in sorted(gold_dict)}
+    keys = list(sorted_dict.keys())
+    return sorted_dict[keys[0]]
 
 
 def script(check, x, y):
@@ -29,7 +31,7 @@ def script(check, x, y):
     elif check("level") == 2:
 
         if x == 0 and y == 10:
-            near_gold(check, x, y)
+            print("Near gold is in", near_gold(check, x, y).x, near_gold(check, x, y).y)
         return "up"
 
     return "pass"
