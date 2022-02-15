@@ -54,24 +54,6 @@ def script(check, x, y):
             return "down"
 
     elif check("level") == 3:
-        '''
-        gold = near_gold(check, x, y, 3) # [1; 6]
-        print(gold.x, gold.y)
-
-        #heuristic(Coordinate(x, y), Coordinate(gold.x, gold.y))
-        if check("gold", x, y):
-            return "take"
-        if x < gold.x:
-            return "right"
-        if y > gold.y:
-            return "up"
-        if x > gold.x:
-            return "left"
-        if y < gold.y:
-            return "down"
-        # 1 23
-        '''
-
 
         if x == 1 and y == 23:
             wall_dict = np.zeros((28, 25))
@@ -79,9 +61,8 @@ def script(check, x, y):
             for i in range(28):
                 for j in range(25):
                     if check("wall", i, j):
-                        wall_dict[i][j] = 1
-                    if check("gold", i, j):
-                        wall_dict[i][j] = 5
+                        wall_dict[i][j] = 9999
+
 
             wall_dict = wall_dict.transpose()
             print(wall_dict)
