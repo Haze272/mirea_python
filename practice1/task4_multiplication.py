@@ -37,3 +37,8 @@ if __name__ == '__main__':
     print(multi16(3)) # 3 * 16 = 48
     print(multi15(3)) # 3 * 15 = 45
     print(multi29(3)) # 3 * 29 = 87
+
+    assert(multi12(3) == 3 * 12)
+    assert(multi16(3) == 3 * 16)
+    assert(multi15(3) == 3 * 15)
+    assert(multi29(3) == 3 * 29)
