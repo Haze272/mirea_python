@@ -78,7 +78,11 @@ def script(check, x, y):
             for i in range(25):
                 for j in range(28):
                     if check("wall", j, i) == True:
-                        wall_dict[i][j] = 1
+                        wall_dict[i][j] = 99
+                    elif check("gold", i, j) == True:
+                        wall_dict[i][j] = 88
+                    else:
+                        wall_dict[-i][-j] = heuristic(Coordinate(x, y), Coordinate(i, j))
             print(wall_dict)
         return "up"
 
