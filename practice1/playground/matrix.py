@@ -20,19 +20,6 @@ print(cost_arr)
 for k in range(len(cost_arr)):
     print(cost_arr[k])
 
-is_found = False
-way = []
-curr = Coordinate(0, 3)
-
-if curr.x - 1 < len(arr) and abs(curr.x - curr.x - 1) == 1:
-    print("nice")
-else:
-    print("shit")
-
-passy = dict()
-for j in range(11):
-    passy[j] = [0]*28
-print(passy)
 
 
 

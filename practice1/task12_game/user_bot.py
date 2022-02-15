@@ -1,4 +1,4 @@
-﻿
+﻿import numpy as np
 
 class Coordinate():
     def __init__(self, x, y):
@@ -73,17 +73,13 @@ def script(check, x, y):
 
 
         if x == 1 and y == 23:
-            wall_dict = dict()
-            for k in range(23):
-                wall_dict[k] = [0] * 25
+            wall_dict = np.zeros((25, 28))
 
-            for i in range(23):
-                for j in range(25):
-                    if check("wall", i, j) == True:
-                        wall_dict[i][j] = 1
-
-            for m in range(len(wall_dict)-1):
-                print(wall_dict[m])
+        for i in range(25):
+            for j in range(28):
+                if check("wall", j, i) == True:
+                    wall_dict[i][j] = 1
+        print(wall_dict)
         return "up"
 
 

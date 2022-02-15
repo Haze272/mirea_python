@@ -1,3 +1,7 @@
 
 *.xml
 practice1/task12_game/__pycache__/user_bot.cpython-36.pyc
+*.pyc
+*.iml
+.idea/mirea_python.iml
+.idea/mirea_python.iml
