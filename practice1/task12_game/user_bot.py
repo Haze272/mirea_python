@@ -75,11 +75,11 @@ def script(check, x, y):
         if x == 1 and y == 23:
             wall_dict = np.zeros((25, 28))
 
-        for i in range(25):
-            for j in range(28):
-                if check("wall", j, i) == True:
-                    wall_dict[i][j] = 1
-        print(wall_dict)
+            for i in range(25):
+                for j in range(28):
+                    if check("wall", j, i) == True:
+                        wall_dict[i][j] = 1
+            print(wall_dict)
         return "up"
 
 
