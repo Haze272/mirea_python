@@ -62,8 +62,8 @@ def script(check, x, y):
 
             for i in range(28):
                 for j in range(25):
-                    if check("gold", i, j) == True:
-                        wall_dict[i][j] = 7
+                    if check("wall", i, j) == True:
+                        wall_dict[i][j] = 1
             wall_dict[1][23] = 4
 
             wall_dict = wall_dict.transpose()
@@ -76,27 +76,11 @@ def script(check, x, y):
             depart = Coordinate(1, 23)
             fini = near_gold(check, depart.x, depart.y, 3)
 
-            frontier = PriorityQueue()
-            frontier.put(depart, 0)
-            came_from = {}
-            cost_so_far = {}
-            came_from[depart] = None
-            cost_so_far[depart] = 0
-            while not frontier.empty():
-                current = frontier.get()
-
-                for next in current.neighboors:
-                    new_cost = cost_so_far[current] + heuristic(current, next)
-                    if next not in cost_so_far or new_cost < cost_so_far[next]:
-                        cost_so_far[next] = new_cost
-                        frontier.put(next, new_cost)
-                        came_from[next] = current
-
 
 
             path_dict = path_dict.transpose()
             print(path_dict)
-
+ 
 
 
         return "up"
