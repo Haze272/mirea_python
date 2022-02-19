@@ -80,7 +80,7 @@ def script(check, x, y):
 
             path_dict = path_dict.transpose()
             print(path_dict)
- 
+
 
 
         return "up"
