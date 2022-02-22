@@ -41,7 +41,7 @@ class Node():
         self.f = 0
 
     def __eq__(self, other):
-        print(self.position == other.position)
+        #print(self.position == other.position)
         return self.position == other.position
 
 
@@ -142,18 +142,19 @@ def get_destination_to(check, x1, y1, x2, y2):
     start = (y1, x1)
     end = (y2, x2)
 
-    path = astar(wall_dict, start, end)
-    print(path)
-    print('\n')
-    print("NIGGERS", x1, y1)
-    if path[1][0] - path[0][0] == 1:
-        return "down"
-    elif path[1][0] - path[0][0] == -1:
-        return "up"
-    elif path[1][1] - path[0][1] == 1:
-        return "right"
-    elif path[1][1] - path[0][1] == -1:
-        return "left"
+    if not(x1 == x2 and y1 == y2):
+        path = astar(wall_dict, start, end)
+        print(path)
+        print('\n')
+        print("NIGGERS", x1, y1)
+        if path[1][0] - path[0][0] == 1:
+            return "down"
+        elif path[1][0] - path[0][0] == -1:
+            return "up"
+        elif path[1][1] - path[0][1] == 1:
+            return "right"
+        elif path[1][1] - path[0][1] == -1:
+            return "left"
     print("NIGGERS")
     return "up"
 

@@ -140,11 +140,15 @@ def main():
 
     b = np.array(maze)
 
-    start = (23, 1)
-    end = (14, 13)
+    start = (17, 1)
+    end = (23, 19)
 
     path = astar(b, start, end)
+    for damn in path:
+        b[damn[0]][damn[1]] = 4
     print(path)
+    print("\n")
+    print(b)
 
 
 if __name__ == '__main__':
