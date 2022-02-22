@@ -105,7 +105,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
             warn("Слишком много итераций")
             return return_path(current_node)
 
-            # Get the current node
+        # Get the current node
         current_node = heapq.heappop(open_list)
         closed_list.append(current_node)
         if current_node == end_node:
@@ -131,18 +131,14 @@ def astar(maze, start, end, allow_diagonal_movement=False):
             if len([closed_child for closed_child in closed_list if closed_child == child]) > 0:
                 continue
 
-            # Create the f, g, and h values
             child.g = current_node.g + 1
             child.h = ((child.position[0] - end_node.position[0]) ** 2) + (
                         (child.position[1] - end_node.position[1]) ** 2)
             child.f = child.g + child.h
 
-            # Child is already in the open list
             if len([open_node for open_node in open_list if
                     child.position == open_node.position and child.g > open_node.g]) > 0:
                 continue
-
-            # Add the child to the open list
             heapq.heappush(open_list, child)
 
     warn("Couldn't get a path to destination")
