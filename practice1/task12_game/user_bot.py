@@ -30,8 +30,6 @@ def near_gold(check, x, y, level):
     for i in range(level_width):
         for j in range(level_height):
             if check("gold", i, j) == True:
-                #gold_dict[heuristic(Coordinate(x, y), Coordinate(i, j))] = Coordinate(i, j)
-                #len(astar(wall_dict, (y, x), (j, i)))
                 gold_dict[len(astar(wall_dict, (y, x), (j, i)))] = Coordinate(i, j)
     sorted_dict = {k: gold_dict[k] for k in sorted(gold_dict)}
     keys = list(sorted_dict.keys())
@@ -45,10 +43,6 @@ import heapq
 
 
 class Node:
-    """
-    A node class for A* Pathfinding
-    """
-
     def __init__(self, parent=None, position=None):
         self.parent = parent
         self.position = position
@@ -78,84 +72,60 @@ def return_path(current_node):
     while current is not None:
         path.append(current.position)
         current = current.parent
-    return path[::-1]  # Return reversed path
+    return path[::-1]
 
 
 def astar(maze, start, end, allow_diagonal_movement=False):
-    """
-    Returns a list of tuples as a path from the given start to the given end in the given maze
-    :param maze:
-    :param start:
-    :param end:
-    :return:
-    """
 
-    # Create start and end node
     start_node = Node(None, start)
     start_node.g = start_node.h = start_node.f = 0
     end_node = Node(None, end)
     end_node.g = end_node.h = end_node.f = 0
 
-    # Initialize both open and closed list
     open_list = []
     closed_list = []
 
-    # Heapify the open_list and Add the start node
     heapq.heapify(open_list)
     heapq.heappush(open_list, start_node)
 
-    # Adding a stop condition
+    # ОСТАНОВИСЬ, ПОКА ОСТАНОВКА НЕ СТАЛА ПОСЛЕДНЕЙ, ЕЖЖЕ
     outer_iterations = 0
-    #max_iterations = (len(maze[0]) * len(maze) // 2)
+    #max_iterations = (len(maze[0]) * len(maze) // 2) так вообще-то правильнее, но были провалы из-за этого
     max_iterations = (len(maze[0]) * len(maze) * len(maze))
 
-    # what squares do we search
+    # суета с ходом по диагонали
     adjacent_squares = ((0, -1), (0, 1), (-1, 0), (1, 0),)
     if allow_diagonal_movement:
         adjacent_squares = ((0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1),)
 
-    # Loop until you find the end
     while len(open_list) > 0:
         outer_iterations += 1
 
         if outer_iterations > max_iterations:
-            # if we hit this point return the path such as it is
-            # it will not contain the destination
-            warn("giving up on pathfinding too many iterations")
+            warn("Слишком много итераций")
             return return_path(current_node)
 
             # Get the current node
         current_node = heapq.heappop(open_list)
         closed_list.append(current_node)
-
-        # Found the goal
         if current_node == end_node:
             return return_path(current_node)
 
-        # Generate children
         children = []
 
-        for new_position in adjacent_squares:  # Adjacent squares
+        for new_position in adjacent_squares:
 
-            # Get node position
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
 
-            # Make sure within range
             if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (
                     len(maze[len(maze) - 1]) - 1) or node_position[1] < 0:
                 continue
 
-            # Make sure walkable terrain
             if maze[node_position[0]][node_position[1]] != 0:
                 continue
-
-            # Create new node
             new_node = Node(current_node, node_position)
-
-            # Append
             children.append(new_node)
 
-        # Loop through children
         for child in children:
             # Child is on the closed list
             if len([closed_child for closed_child in closed_list if closed_child == child]) > 0:
