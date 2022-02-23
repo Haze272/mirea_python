@@ -214,4 +214,16 @@ def script(check, x, y):
         destination = get_destination_to(check, depart.x, depart.y, fini.x, fini.y)
         print(destination)
         return destination
+
+    elif check("level") == 4:
+        if check("gold", x, y):
+            return "take"
+        print('\n')
+
+        depart = Coordinate(x, y)
+        fini = near_gold(check, depart.x, depart.y, 3)
+
+        destination = get_destination_to(check, depart.x, depart.y, fini.x, fini.y)
+        print(destination)
+        return destination
     return "up"
