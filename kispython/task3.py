@@ -10,7 +10,7 @@ def main(b, n, a, z):
     for j1 in range(1, a + 1):
         for i in range(1, n + 1):
             for k in range(1, b + 1):
-                num1 = math.exp(3) * (i**2 - j1**3 - (z/52))
+                num1 = math.exp(i**2 - j1**3 - (z/52))**3
                 num2 = (94 * math.sqrt(k))
                 sum2 += (num1 - num2)
 
