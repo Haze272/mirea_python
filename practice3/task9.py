@@ -93,6 +93,7 @@ if __name__ == "__main__":
         i = 0
         plt.ion()
         while i < n:
+
             isHappy = 0
             if i % 200 == 0:
                 for j in range(x):
@@ -125,7 +126,7 @@ if __name__ == "__main__":
                 data3.clear()
                 data4.clear()
                 while j < x:
-                    while h < x:
+                    while h < y:
                         if data[j, h] == 1:
                             data1.append(j)
                             data2.append(h)
@@ -145,5 +146,5 @@ if __name__ == "__main__":
             i += 1
         plt.ioff()
         plt.show()
-        #plt.plot(itHappy, happy)
-        #plt.show()
+        plt.plot(itHappy, happy)
+        plt.show()
