@@ -1,33 +1,34 @@
 
 class HTML:
 
+    resultCode = []
+
     def __init__(self):
-        self.resultCode = []
+        HTML.resultCode = []
 
     class body:
 
         def __enter__(self):
-            print("<body>")
+            HTML.resultCode.append("<body>")
 
         def __exit__(self, *args, **kwargs):
-            print("</body>")
+            HTML.resultCode.append("</body>")
 
     class div:
 
         def __enter__(self):
-            print("<div>")
+            HTML.resultCode.append("<div>")
 
         def __exit__(self, *args, **kwargs):
-            print("</div>")
+            HTML.resultCode.append("</div>")
 
     def p(self, value):
         tag = "<p>" + value + "</p>"
-        self.resultCode.append(tag)
-        print(tag)
+        HTML.resultCode.append(tag)
 
     def get_code(self):
         result = ''
-        for item in self.resultCode:
+        for item in HTML.resultCode:
             result += item
             result += '\n'
 
@@ -43,20 +44,10 @@ with html.body():
         with html.div():
             html.p('Третья строка.')
 
-#print(html.get_code())
-'''
-html = HTML()
-with html.body():
-    with html.div():
-        with html.div():
-            html.p('Первая строка.')
-            html.p('Вторая строка.')
-        with html.div():
-            html.p('Третья строка.')
 print(html.get_code())
+
 '''
-'''
-Результат:
+Ождиаемый результат:
 
 <body>
     <div>
