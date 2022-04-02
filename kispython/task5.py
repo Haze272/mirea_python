@@ -3,12 +3,14 @@ import math
 
 def main(z):
     sum = 0
-    for i in range(1, len(z) + 1):
-        num1 = (z[math.floor(i/3)])**3
-        num2 = 8 * ((z[math.floor(i/3)])**2)
-        sum += (num1 - num2) ** 2
 
-    return sum * 66
+    for i in range(len(z)):
+        difficult1 = pow(z[math.trunc(i/3)], 3)
+        difficult2 = pow(z[math.trunc(i/3)], 2)
+        substraction_result = difficult1 - 8 * difficult2
+        sum += 66 * pow(substraction_result, 2)
+
+    return sum
 
 
 arr = [0.35, -0.93, 0.94, 0.59, 0.05, 0.75, -0.52]
