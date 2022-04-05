@@ -83,7 +83,7 @@ print(o.peep())  # 1
 print(o.peep())  # 2
 print(o.peep())  # 4
 '''
-'''
+
 o = main()
 print(o.mix())  # 0
 print(o.peep())  # 1
@@ -98,8 +98,3 @@ print(o.peep())  # 7
 print(o.mix())  # 0
 print(o.mix())  # KeyError
 print(o.peep())  # 1
-'''
-o = main()
-print(o.mix())
-print(o.mix())
-print(o.peep())
