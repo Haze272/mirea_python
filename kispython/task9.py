@@ -27,7 +27,7 @@ class FSM:
             self.current_state = self.A
             return 7
         else:
-            return KeyError
+            raise KeyError
 
     def mix(self):
         if self.current_state == self.A:
@@ -43,7 +43,7 @@ class FSM:
             self.current_state = self.B
             return 8
         else:
-            return KeyError
+            raise KeyError
 
 
 def main():
