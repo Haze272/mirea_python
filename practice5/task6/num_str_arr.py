@@ -31,5 +31,5 @@ def test_mode(data):
 
 if __name__ == "__main__":
     test_add_num()
-    test_add_str()
-    test_mode()
+    #test_add_str()
+    #test_mode()
