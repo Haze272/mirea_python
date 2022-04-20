@@ -5,7 +5,7 @@ def main(x):
     result = 0
     if x < 13:
         result = pow(x, 5)
-    elif x >= 13 and x < 87:
+    elif 13 <= x < 87:
         result = pow(x, 7) - 1 - (pow(math.ceil(x), 3) / 54)
     elif x >= 87:
         result = pow(math.floor(x), 3)

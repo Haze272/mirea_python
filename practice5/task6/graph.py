@@ -111,4 +111,5 @@ def testing_graph(q, w, e, r, t, y):
     del graph
 
 
-testing_graph()
+if __name__ == "__main__":
+    testing_graph()
