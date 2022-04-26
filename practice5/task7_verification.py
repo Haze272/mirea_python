@@ -3,9 +3,19 @@
 
 class Node:
 
-    def __init__(self, data, indexloc=None):
+    def __init__(self, data, includes_leverage=False, indexloc=None):
         self.data = data
         self.index = indexloc
+        self.includes_leverage = None
+
+        if includes_leverage:
+            self.isLeveragePressed = False
+
+    def pull_leverage(self):
+        if not self.isLeveragePressed:
+            self.isLeveragePressed = True
+        elif self.isLeveragePressed:
+            self.isLeveragePressed = False
 
 
 class Graph:
@@ -90,15 +100,16 @@ class Graph:
             for m in self.connections_from(i):
                 print(f'\t{i.data} -> {m[0].data}')
 
-
         print('}')
+
+
 
 
 def make_model():
     room0 = Node('room0')  # depart
     room1 = Node('room1')
     room2 = Node('room2')  # fini
-    room3 = Node('room3')
+    room3 = Node('room3', True)
     room4 = Node('room4')
     room5 = Node('room5')
     graph = Graph.create_from_nodes([room0, room1, room2, room3, room4, room5])
@@ -122,9 +133,12 @@ def make_model():
     graph.print_adj_mat()
     graph.get_dot_graph()
 
+    return graph
+
 
 if __name__ == "__main__":
-    make_model()
+    graph = make_model()
+    START_STATE = 'room0'
 
 
 
