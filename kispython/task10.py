@@ -12,10 +12,7 @@ def main(*data_row):
     rows = len(data_row)
 
     # удаление лишних строк
-    damn = data_row.copy()
-    for i in range(rows):
-        if all(x is None for x in data_row[i]):
-            damn.pop(i)
+
 
     # удаление дублей среди строкS
     print(damn)
