@@ -21,7 +21,7 @@ file = open('test.xlsx', 'wb')
 file.write(send.content)
 file.close()
 
-schedule = pd.read_excel('test.xlsx')
-schedule.head()
+#schedule = pd.read_excel('test.xlsx')
+#schedule.head()
 
-print(schedule["ИНБО-07-20"])
+#print(schedule["ИНБО-07-20"])
