@@ -3,17 +3,12 @@ import math
 
 def main(x, z):
     sum = 0
-    n = len(z)-1
+    n = 3
 
-    for i in range(1, n):
-        difficult1 = 68 * pow(z[math.trunc(i/4)], 2)
-        difficult2 = x[n + 1 - math.trunc(i/2)]
-        difficult3 = 79 * pow(x[n + 1 - i], 3)
+    for i in range(3):
+        sum += math.cos(68*(z[i//4])**2 - (x[2-i//2]) - 79*(x[2-i])**3)**3
 
-        substraction_result = math.cos(difficult1 - difficult2 - difficult3)
-        sum += 28 * pow(substraction_result, 3)
-
-    return sum
+    return 28 * sum
 
 
 arr = [0.95, 0.06, 0.24]
