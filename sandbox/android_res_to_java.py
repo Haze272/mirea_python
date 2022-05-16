@@ -21,4 +21,10 @@ for i in access:
     result[txt[0]] = txt[1]
 
 for key, value in result.items():
-   print("tagsList.put(\"" + key + "\", \"" + value + "\");")
+    #print("tagsList.put(\"" + key + "\", \"" + value + "\");")
+
+    #tagsDone.put("HTML", 0);
+    #print("tagsDone.put(\"" + key + "\", 0);")
+
+    #tagsList.add("sss");
+    print("tagsList.add(\"" + key + "\");")
